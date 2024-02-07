@@ -1,0 +1,27 @@
+.heading-container {
+  background-color: #ffffff;
+  background-size: cover;
+  font-family: 'Roboto';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-heading {
+  color: #1e293b;
+  font-size: 37px;
+}
+.button-container {
+  display: flex;
+}
+.button {
+  margin-left: 20px;
+  background-color: transparent;
+  border: 1px solid #db1c48;
+  border-radius: 19px;
+  height: 40px;
+  width: 90px;
+  font-family: 'Roboto';
+  color: #db1c48;
+  font-weight: 500;
+  margin-top: 11%;
+}
