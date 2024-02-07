@@ -1,28 +1,20 @@
 import './index.css'
 
 const TopHeader = props => {
-  const {languageGreetingsList} = props
+  const {languageGreetingsLists, changeLanguage} = props
 
-  const onClickButton = id => {
-    console.log(id)
+  const onClickButton = () => {
+    changeLanguage(languageGreetingsLists.buttonText)
   }
 
   return (
-    <div className="heading-container">
-      <h1 className="main-heading">Multilingual Language</h1>
+    <>
       <div className="button-container">
-        {languageGreetingsList.map(eachItem => (
-          <button
-            className="button"
-            key={eachItem.id}
-            type="button"
-            onClick={onClickButton}
-          >
-            {eachItem.buttonText}
-          </button>
-        ))}
+        <button className="button" type="button" onClick={onClickButton}>
+          {languageGreetingsLists.buttonText}
+        </button>
       </div>
-    </div>
+    </>
   )
 }
 

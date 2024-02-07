@@ -1,6 +1,7 @@
+import {Component} from 'react'
 import './App.css'
-
 import TopHeader from './components/TopHeader'
+import ContentText from './components/ContentText'
 
 const languageGreetingsList = [
   {
@@ -26,7 +27,50 @@ const languageGreetingsList = [
   },
 ]
 
-// Replace your code here
-const App = () => <TopHeader languageGreetingsList={languageGreetingsList} />
+class App extends Component {
+  state = {
+    activeButton: languageGreetingsList[0].buttonText,
+  }
+
+  changeLanguage = buttonValue => {
+    this.setState({activeButton: buttonValue})
+  }
+
+  getFilteredData = () => {
+    const {activeButton} = this.state
+    const filteredData = languageGreetingsList.filter(
+      eachData => eachData.buttonText === activeButton,
+    )
+    return filteredData
+  }
+
+  render() {
+    const {activeButton} = this.state
+    const filteredData = this.getFilteredData()
+    return (
+      <div>
+        <h1 className="main-heading">Multilingual Greetings</h1>
+        <ul>
+          {languageGreetingsList.map(item => (
+            <li key={item.id}>
+              <TopHeader
+                languageGreetingsLists={item}
+                activeButton={activeButton}
+                changeLanguage={this.changeLanguage}
+              />
+            </li>
+          ))}
+        </ul>
+        <ul>
+          {filteredData.map(item => (
+            <li key={item.id}>
+              <ContentText languageDetails={item} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+}
 
 export default App
